@@ -14,17 +14,19 @@ Created on %(date)s
 list1 = [1,2,3,4,5]
 list1
 type(list1)
+#list- could have mixed datatype values
 
 
 
 
-list2 = ['a','c','d','e']
+#list2 = ['a','c','d','e']
 
 #%%
 #tuple - multiple type of objects, immutable
 tuple1 = (1,2, 'a', 'b')
 tuple1
 type(tuple1)
+
 
 #%%
 #Dictionary - key-value pairs
@@ -34,9 +36,10 @@ type(dict1)
 
 #%%
 #Set - ordered collection of simple items, immutable
-set1 = set(['india', 'pakistan', 'england', 'australia','india'])
-set1
-type(set1)
+set1 = {'india', 'pakistan', 'england', 'australia','india'}
+print(set1)
+#type(set1)
+#properties same as of sets
 
 
 
@@ -45,6 +48,7 @@ type(set1)
 
 str1 = 'Python Programming'
 type(str1)
+#immutable
 
 
 #%%
@@ -55,8 +59,8 @@ for i in list1:
 tuple1
 for i in tuple1:
     print(i)
-for i in range(1, 10, 2):
-    print(i, end=' ')
+for i in range(0, 100, 5):
+    print(i, end='     ')
     
 #%%
 #frozen set- accepts iterable object as input parameter.
@@ -68,10 +72,10 @@ frozenset1 = frozenset(tupleFZ1)
 frozenset1
 type(frozenset1)
 
-dict1
-frozenset2 = frozenset(dict1)
-type(frozenset2)
-frozenset2
+#dict1
+#frozenset2 = frozenset(dict1)
+#type(frozenset2)
+#frozenset2
 #keys of dictionary made as frozen set
 
 #%%
@@ -95,7 +99,7 @@ import numpy as np
 np1 = np.arange(1,10)
 np1
 type(np1)
-np?
+#np?
 np2 = np.array([ 90, 50, 60, 70 ])
 np2
 np.sort(np2)
@@ -108,18 +112,22 @@ np3.shape
 #pandas - dataframe, excel like
 #https://mode.com/python-tutorial/pandas-dataframe/
 import pandas as pd
-pd?
+
 df1 = pd.DataFrame({'rollno':[1,2,3,4], 'name': [ "Dhiraj", "Kounal", "Akhil", "Pooja" ], 'marks':[ 40, 50, 60, 70 ], 'gender':['M','M','M','F']})
 df1
 type(df1) 
 
 df1.columns
-df1.describe
+df1.describe()
 df1.dtypes
 df1.shape
 df1.groupby('gender').size()
 df1.groupby('gender')['marks'].mean()
 df1.groupby('gender').aggregate({'marks': [np.mean, 'max']})
+
+df2 = pd.DataFrame({'names':['ankit','nikhil','Rajnesh'],'marks':[10,10,10]})
+df2.describe()
+df2.groupby('names')['marks'].head()
 
 #%%
 #Graphs https://python-graph-gallery.com/
