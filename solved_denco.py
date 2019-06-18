@@ -16,5 +16,24 @@ pd.set_option('display.max_columns',15)
 df.custname.value_counts()#value_count is used to return the  most frequently-occurring element.
 df.custname.value_counts().sort_values(ascending=False).head(5)
 
-dg = df.groupby('custname').size(1)
+#by numpy
+df.groupby('custname').size().sort_values(ascending=False).head(5)
 
+
+#customers with most revenue
+df.groupby('custname')['revenue'].sum().sort_values(ascending= False).head()
+#sir's way
+
+df.groupby('custname').aggregate({'revenue':np.sum}).sort_values(by='revenue', ascending=False).head(5)
+#these are top parts which give max revenue 
+df.groupby('partnum')['revenue'].sum().sort_values(ascending= False).head()
+#sir's Way
+df[['partnum','revenue']].groupby('partnum').sum().sort_values(by='revenue', ascending=False).head(5)
+
+#these are top parts which give max margins
+#if total sales has to be considered
+df.groupby('partnum')['margin'].sum().sort_values(ascending= False).head()
+#sir's Way
+df[['partnum','margin']].groupby('partnum').sum().sort_values(by='margin', ascending=False).head(5)
+
+df.groupby('partnum').size().sort_values(ascending=False).head()

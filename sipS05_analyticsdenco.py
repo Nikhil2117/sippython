@@ -34,7 +34,7 @@ df.custname.value_counts()
 df.custname.value_counts().sort_values(ascending=False).head(5)
 
 #pandas way
-df.groupby('custname').size()
+df.groupby('custname').size().head()
 
 #this sorts by the names
 df.sort_values(['custname'])  
@@ -49,7 +49,7 @@ df.groupby('custname').size().sort_values(ascending=False).head(5)
 
 #extra- ??
 df.groupby(['custname'])['margin'].nlargest(3)
-df.sort_values(['revenue'], ascending= True).groupby( 'region' ).mean()
+df.sort_values(['revenue'], ascending= True).groupby( 'region' )
 
 
 #Which customers contribute the most to their revenue - How do I retain these customers & target incentives
@@ -66,8 +66,7 @@ df.groupby('custname').aggregate({'revenue':np.sum}).sort_values(by='revenue', a
 
 df.groupby('custname').aggregate({'revenue':[np.sum, 'size'] }).sort_values(by='revenue', ascending=False) #error
 
-df[['revenue','custname']].groupby('custname').agg['size'] 
-.sort_values(by='revenue', ascending=False) #error
+df[['revenue','custname']].groupby('custname').agg['size'].sort_values(by='revenue', ascending=False) #error
 
 
 
@@ -105,4 +104,3 @@ df.groupby('partnum').size().sort_values(ascending=False).head(5)
 df[['revenue', 'region']].groupby( 'region').sum().sort_values(by='revenue', ascending=False)
 #East gave max revenue
 df[['revenue', 'region']].groupby( 'region').sum().sort_values(by='revenue', ascending=False).plot(kind='barh')
-
