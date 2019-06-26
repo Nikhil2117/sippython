@@ -32,8 +32,12 @@ df[['partnum','revenue']].groupby('partnum').sum().sort_values(by='revenue', asc
 
 #these are top parts which give max margins
 #if total sales has to be considered
-df.groupby('partnum')['margin'].sum().sort_values(ascending= False).head()
+dd= df.groupby('partnum')['margin'].sum().sort_values(ascending= False).head()
 #sir's Way
 df[['partnum','margin']].groupby('partnum').sum().sort_values(by='margin', ascending=False).head(5)
 
 df.groupby('partnum').size().sort_values(ascending=False).head()
+
+dg = df[['revenue','region']].groupby('region').sum()
+type(dg)
+type(dd)
